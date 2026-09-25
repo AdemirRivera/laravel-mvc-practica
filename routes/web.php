@@ -6,7 +6,44 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return 'hola mundo';
     // return view('welcome');
+    // return route('cursos.informacion');
+    // return route('cursos.show', 2);
+    // return route('cursos.categoria', ['curso' => 'html', 'categoria' => 'desarrollo web']);
 });
+
+Route::get('/posts', function () {
+    return 'Listado de post';
+});
+
+Route::get('/posts/create', function () {
+    return 'Crear nuevo post';
+});
+
+Route::post('/posts', function () {
+    return 'Post creado';
+});
+
+Route::get('/posts/{post}', function ($post) {
+    return 'Pagina del post' . $post;
+});
+
+Route::get('/posts/{post}/edit', function ($post) {
+    return 'Editar post' . $post;
+});
+
+Route::put('/posts/{post}', function ($post) {
+    return 'Post actualizado' . $post;
+});
+
+Route::delete('/posts/{post}', function ($post) {
+    return 'Post eliminado' . $post;
+});
+
+
+
+
+
+// PRIMERA PRUEBA
 
 // -> Ruta contacto - GET
 // Route::get('/contacto', function(){
@@ -19,14 +56,14 @@ Route::get('/', function () {
 // });
 
 // -> Ruta contacto - GET y POST
-Route::match(['get', 'post'], '/contacto', function () {
-    return 'view contacto';
-});
+// Route::match(['get', 'post'], '/contacto', function () {
+//     return 'view contacto';
+// });
 
 // -> Ruta cursos - GET
-Route::get('/cursos/informacion', function () {
-    return 'bienvenido al curso de informatica';
-});
+// Route::get('/cursos/informacion', function () {
+//     return 'bienvenido al curso de informatica';
+// })->name('cursos.informacion');
 
 // -> Ruta cursos con parámetro - GET
 // Route::get('/cursos/{curso}', function ($curso) {
@@ -48,9 +85,10 @@ Route::get('/cursos/informacion', function () {
 //     return 'El curso digitado es: ' . $curso;
 // })->whereIn('curso', ['html', 'css', 'javascript']);
 
-Route::get('/cursos/{id}', function ($id) {
-    return 'El id digitado es: ' . $id;
-});
+// -> Ruta con parámetro mediante patron personalizado - GET
+// Route::get('/cursos/{id}', function ($id) {
+//     return 'El id digitado es: ' . $id;
+// })->name('cursos.show');
 
 // -> Ruta cursos con parámetro y subruta opcional - GET
 // Route::get('/cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
@@ -61,4 +99,4 @@ Route::get('/cursos/{id}', function ($id) {
 // })->where([
 //             'curso' => '[A-Za-z]+',
 //             'categoria' => '[A-Za-z]+'
-//         ]);
+//         ])->name('cursos.categoria');
