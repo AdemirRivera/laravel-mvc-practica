@@ -1,47 +1,62 @@
 <?php
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', HomeController::class);
+
 // -> Ruta por defecto - GET
-Route::get('/', function () {
-    return 'hola mundo';
-    // return view('welcome');
-    // return route('cursos.informacion');
-    // return route('cursos.show', 2);
-    // return route('cursos.categoria', ['curso' => 'html', 'categoria' => 'desarrollo web']);
+// Route::get('/', function () {
+//     return 'hola mundo';
+// return view('welcome');
+// return route('cursos.informacion');
+// return route('cursos.show', 2);
+// return route('cursos.categoria', ['curso' => 'html', 'categoria' => 'desarrollo web']);
+// });
+
+// Route::resource('articulos', PostController::class)
+//     ->parameters(['articulos' => 'post'])
+//     ->names('posts');
+
+Route::prefix('posts')->name('posts.')->controller(PostController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/{post}', 'show')->name('show');
+    Route::post('/', 'store')->name('store');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{post}/edit', 'edit')->name('edit');
+    Route::put('/{post}', 'update')->name('update');
+    Route::delete('/{post}', 'destroy')->name('destroy');
+
 });
 
-Route::get('/posts', function () {
-    return 'Listado de post';
-});
+// Route::get('/posts', function () {
+//     return 'Listado de post';
+// });
 
-Route::get('/posts/create', function () {
-    return 'Crear nuevo post';
-});
+// Route::get('/posts/create', function () {
+//     return 'Crear nuevo post';
+// });
 
-Route::post('/posts', function () {
-    return 'Post creado';
-});
+// Route::post('/posts', function () {
+//     return 'Post creado';
+// });
 
-Route::get('/posts/{post}', function ($post) {
-    return 'Pagina del post' . $post;
-});
+// Route::get('/posts/{post}', function ($post) {
+//     return 'Pagina del post' . $post;
+// });
 
-Route::get('/posts/{post}/edit', function ($post) {
-    return 'Editar post' . $post;
-});
+// Route::get('/posts/{post}/edit', function ($post) {
+//     return 'Editar post' . $post;
+// });
 
-Route::put('/posts/{post}', function ($post) {
-    return 'Post actualizado' . $post;
-});
+// Route::put('/posts/{post}', function ($post) {
+//     return 'Post actualizado' . $post;
+// });
 
-Route::delete('/posts/{post}', function ($post) {
-    return 'Post eliminado' . $post;
-});
-
-
-
-
+// Route::delete('/posts/{post}', function ($post) {
+//     return 'Post eliminado' . $post;
+// });
 
 // PRIMERA PRUEBA
 
