@@ -7,13 +7,13 @@ namespace App\Http\Controllers;
 class HomeController extends Controller
 {
 
-    public function index()
-    {
-        return 'Hola desde la pagina de inicio';
-    }
+    // public function index()
+    // {
+    //     return 'Hola desde la pagina de inicio';
+    // }
 
     public function __invoke()
     {
-        return 'hola desde la pagina principal';
+        return view('welcome');
     }
 }

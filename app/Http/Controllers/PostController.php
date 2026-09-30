@@ -6,27 +6,27 @@ class PostController extends Controller
 {
     public function index()
     {
-        return 'Listado de post';
+        return view('posts.index');
     }
 
     public function show($post)
     {
-        return 'Pagina del post' . $post;
+        return view('posts.show');
     }
 
     public function create()
     {
-        return 'Crear nuevo post';
+        return view('posts.create');
+    }
+
+    public function edit($post)
+    {
+        return view('posts.edit');
     }
 
     public function store()
     {
         return 'Post creado';
-    }
-
-    public function edit($post)
-    {
-        return 'Editar post' . $post;
     }
 
     public function update($post)

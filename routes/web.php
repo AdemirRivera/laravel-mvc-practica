@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
+Route::resource('posts', PostController::class);
+
 // -> Ruta por defecto - GET
 // Route::get('/', function () {
 //     return 'hola mundo';
@@ -17,18 +19,6 @@ Route::get('/', HomeController::class);
 // Route::resource('articulos', PostController::class)
 //     ->parameters(['articulos' => 'post'])
 //     ->names('posts');
-
-Route::prefix('posts')->name('posts.')->controller(PostController::class)->group(function () {
-
-    Route::get('/', 'index')->name('index');
-    Route::get('/{post}', 'show')->name('show');
-    Route::post('/', 'store')->name('store');
-    Route::get('/create', 'create')->name('create');
-    Route::get('/{post}/edit', 'edit')->name('edit');
-    Route::put('/{post}', 'update')->name('update');
-    Route::delete('/{post}', 'destroy')->name('destroy');
-
-});
 
 // Route::get('/posts', function () {
 //     return 'Listado de post';
