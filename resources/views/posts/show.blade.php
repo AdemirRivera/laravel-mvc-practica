@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <h1>Detalle de un post</h1>
+    <h1>Detalle del post {{ $post }} </h1>
+    <p> mensaje de {{ $prueba }} </p>
+    <p> mensaje de {{ $test }} </p>
 </body>
 
 </html>

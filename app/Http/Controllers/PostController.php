@@ -11,7 +11,10 @@ class PostController extends Controller
 
     public function show($post)
     {
-        return view('posts.show');
+        // return view('posts.show', [
+        //     'post' => $post
+        // ]);
+        return view('posts.show', compact('post'));
     }
 
     public function create()
@@ -21,7 +24,7 @@ class PostController extends Controller
 
     public function edit($post)
     {
-        return view('posts.edit');
+        return view('posts.edit', compact('post'));
     }
 
     public function store()
